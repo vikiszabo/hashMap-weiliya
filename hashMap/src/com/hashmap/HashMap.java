@@ -69,7 +69,7 @@ class HashMap<K, V> {
     private int getHash(K key) {
 
         // This function converts somehow the key to an integer between 0 and bucketSize
-        // In C# GetHashCode(), in Java hashCode() is a function of Object, so all non-primitive types
+        // in Java hashCode() is a function of Object, so all non-primitive types
         // can easily be converted to an integer.
         return getHash(key, bucketList.length);
     }
@@ -81,15 +81,10 @@ class HashMap<K, V> {
     private void resizeIfNeeded() {
         // If it holds more bucketList than bucketSize * 2, destroy and recreate it
         // with the double size of the bucketList array.
-
-      //  LinkedList<KeyValue<K, V> newBucketList = new LinkedList;
-
-
         if(valueCount > bucketList.length * 2){
             LinkedList[] linkedLists = initializeBucketList(bucketList.length * 2);
             getCopyIntoBucketListAndReplace(linkedLists);
         }
-
         // if it holds less bucketList than bucketSize / 2, destroy and recreate it
         // with half size of the bucketList array.
         else if(valueCount < bucketList.length / 2){
@@ -110,15 +105,7 @@ class HashMap<K, V> {
         }
         bucketList = newBucketList;
     }
-// + other functions, like clearAll(), delete(),..
 
-    /* Your task will be to create your own HashMap with the following requirements:
-
-It should have the following functions: add(key, value), getValue(key), remove(key), clearAll()
-Its keys are Strings, its values Integers.
-Its initialized with the size of 16, you don't need to resize it when it gets too big.
-Hint: You can easilly convert an Object to a number between 0 and N with the following code:
-obj.GetHashCode() % N (C#), obj.hashCode() % N (Java). */
 
     public void remove(K key){
 
